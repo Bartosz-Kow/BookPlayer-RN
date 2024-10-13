@@ -16,6 +16,7 @@ export default function TabLayout() {
         tabBarActiveTintColor: "#CDE7BE",
         tabBarInactiveTintColor: "#EAF4F4",
         tabBarStyle: styles.tabBar,
+        headerShown: false,
         tabBarItemStyle: {
           backgroundColor:
             activeTab === route.name
