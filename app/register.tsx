@@ -4,23 +4,21 @@ import { useRouter } from "expo-router";
 
 const StyledView = styled(View);
 const StyledText = styled(Text);
-
-export default function Index() {
+const Register = () => {
+  const StyledView = styled(View);
+  const StyledText = styled(Text);
   const router = useRouter();
-  const handleRouteLogin = () => {
-    router.push("/login");
-  };
-  const handleRouteRegister = () => {
-    router.push("/register");
+
+  const handleRouteHome = () => {
+    router.push("/(tabs)");
   };
   return (
     <StyledView className="bg-background flex-1 justify-center items-center ">
-      <TouchableOpacity onPress={handleRouteLogin}>
-        <StyledText className="text-lg text-blue-900">LOGIN</StyledText>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={handleRouteRegister}>
+      <TouchableOpacity onPress={handleRouteHome}>
         <StyledText className="text-lg text-blue-900">REGISTER</StyledText>
       </TouchableOpacity>
     </StyledView>
   );
-}
+};
+
+export default Register;
