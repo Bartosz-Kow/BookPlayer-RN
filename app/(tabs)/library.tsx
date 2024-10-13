@@ -1,10 +1,11 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { View } from "react-native";
+import { styled } from "nativewind";
+
+const StyledView = styled(View);
 
 const Library = () => {
-  return <View></View>;
+  return <StyledView className="bg-background flex-1"></StyledView>;
 };
-
-const styles = StyleSheet.create({});
 
 export default Library;
