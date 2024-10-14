@@ -18,7 +18,11 @@ const Header = () => {
     <SafeAreaView>
       <StyledView className="bg-background  w-full h-14 flex flex-row justify-between items-center mt-8 px-4">
         <StyledText className="text-white font-sniglet text-3xl">
-          wolnelektury.pl
+          wolne
+          <StyledText className="text-button-primary font-sniglet text-3xl">
+            lektury
+          </StyledText>
+          .pl
         </StyledText>
         <Avatar.Icon
           size={39}

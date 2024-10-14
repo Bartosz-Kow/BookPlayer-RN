@@ -18,7 +18,7 @@ export default function Index() {
   return (
     <StyledView className="bg-background flex-1 justify-center px-6 }">
       <StyledText className="text-white mt-1 font-sniglet text-4xl">
-        wolnelektury.pl
+        wolne<StyledText className="text-button-primary">lektury</StyledText>.pl
       </StyledText>
       <StyledText className="text-button-primary text-center mt-3 text-base text-xl font-baskerville">
         Miejsce, gdzie możesz posłuchać audiobooków za darmo

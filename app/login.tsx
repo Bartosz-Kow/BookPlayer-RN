@@ -30,7 +30,8 @@ const Login = () => {
           Zaloguj się
         </StyledText>
         <StyledText className="text-white text-center font-sniglet mb-8 text-4xl">
-          wolnelektury.pl
+          wolne<StyledText className="text-button-primary">lektury</StyledText>
+          .pl
         </StyledText>
 
         <LoginInput
