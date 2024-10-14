@@ -1,17 +1,11 @@
 import { styled } from "nativewind";
 import { Text, View, TouchableOpacity } from "react-native";
-import { useRouter } from "expo-router";
+import { useNavigationHandlers } from "@/hooks/useNavigationHandlers";
 
-const StyledView = styled(View);
-const StyledText = styled(Text);
 const Register = () => {
   const StyledView = styled(View);
   const StyledText = styled(Text);
-  const router = useRouter();
-
-  const handleRouteHome = () => {
-    router.push("/(tabs)");
-  };
+  const { handleRouteHome } = useNavigationHandlers();
   return (
     <StyledView className="bg-background flex-1 justify-center items-center ">
       <TouchableOpacity onPress={handleRouteHome}>

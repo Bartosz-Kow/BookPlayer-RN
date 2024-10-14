@@ -1,8 +1,8 @@
 import { styled } from "nativewind";
 import { Text, View, TouchableOpacity } from "react-native";
 import { useLoadFonts } from "@/hooks/useLoadFonts";
-import { useRouter } from "expo-router";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { useNavigationHandlers } from "@/hooks/useNavigationHandlers";
 
 const StyledView = styled(View);
 const StyledText = styled(Text);
@@ -10,15 +10,7 @@ const StyledOpacity = styled(TouchableOpacity);
 
 export default function Index() {
   const fontsLoaded = useLoadFonts();
-  const router = useRouter();
-
-  const handleRouteLogin = () => {
-    router.push("/login");
-  };
-
-  const handleRouteRegister = () => {
-    router.push("/register");
-  };
+  const { handleRouteLogin, handleRouteRegister } = useNavigationHandlers();
 
   if (!fontsLoaded) {
     return null;
