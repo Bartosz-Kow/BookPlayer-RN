@@ -15,6 +15,13 @@ module.exports = {
         "button-primary": "#CDE7BE",
         "icons-primary": "#EAF4F4",
       },
+      fontFamily: {
+        sniglet: ["Sniglet-Regular", "sans-serif"],
+        abhaya: ["AbhayaLibre-Medium", "serif"],
+        baskerville: ["Baskervville-Italic", "serif"],
+        candal: ["Candal-Regular", "sans-serif"],
+        "space-mono": ["SpaceMono-Regular", "monospace"],
+      },
     },
   },
   plugins: [],
