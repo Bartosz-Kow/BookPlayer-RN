@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { KeyboardAvoidingView, Platform, ImageBackground } from "react-native";
+import { KeyboardAvoidingView, Platform } from "react-native";
 import { useNavigationHandlers } from "@/hooks/useNavigationHandlers";
 import {
   StyledView,
