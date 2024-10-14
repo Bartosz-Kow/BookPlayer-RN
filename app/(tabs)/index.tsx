@@ -1,9 +1,6 @@
 import React from "react";
-import { View } from "react-native";
-import { styled } from "nativewind";
 import Header from "@/components/Header";
-
-const StyledView = styled(View);
+import { StyledView } from "@/components/styledComponents";
 
 const Index = () => {
   return (

@@ -1,8 +1,6 @@
 import React from "react";
-import { View } from "react-native";
-import { styled } from "nativewind";
+import { StyledView } from "@/components/styledComponents";
 
-const StyledView = styled(View);
 const Explore = () => {
   return <StyledView className="bg-background flex-1"></StyledView>;
 };

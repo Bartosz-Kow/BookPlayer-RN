@@ -1,12 +1,11 @@
-import { styled } from "nativewind";
-import { Text, View, TouchableOpacity } from "react-native";
 import { useLoadFonts } from "@/hooks/useLoadFonts";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { useNavigationHandlers } from "@/hooks/useNavigationHandlers";
-
-const StyledView = styled(View);
-const StyledText = styled(Text);
-const StyledOpacity = styled(TouchableOpacity);
+import {
+  StyledView,
+  StyledText,
+  StyledOpacity,
+} from "@/components/styledComponents";
 
 export default function Index() {
   const fontsLoaded = useLoadFonts();
@@ -55,11 +54,11 @@ export default function Index() {
 
       <StyledView className="flex-row justify-center items-center mt-10">
         <StyledText className="text-gray-400 mr-2">Masz już konto?</StyledText>
-        <TouchableOpacity onPress={handleRouteLogin}>
+        <StyledOpacity onPress={handleRouteLogin}>
           <StyledText className="text-green-400 underline">
             Zaloguj się
           </StyledText>
-        </TouchableOpacity>
+        </StyledOpacity>
       </StyledView>
     </StyledView>
   );
