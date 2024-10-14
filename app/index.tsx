@@ -16,20 +16,12 @@ export default function Index() {
   }
 
   return (
-    <StyledView className="bg-background flex-1 justify-center px-6 font-semibold">
-      <StyledText className="text-gray-300" style={{ fontSize: 28 }}>
-        Witamy!
-      </StyledText>
-      <StyledText
-        className="text-white mt-1 font-sniglet"
-        style={{
-          fontSize: 38,
-        }}
-      >
+    <StyledView className="bg-background flex-1 justify-center px-6 }">
+      <StyledText className="text-white mt-1 font-sniglet text-4xl">
         wolnelektury.pl
       </StyledText>
-      <StyledText className="text-gray-400 text-center mt-3 text-base font-baskerville">
-        W miejscu, gdzie możesz posłuchać audiobooków za darmo
+      <StyledText className="text-button-primary text-center mt-3 text-base text-xl font-baskerville">
+        Miejsce, gdzie możesz posłuchać audiobooków za darmo
       </StyledText>
 
       <StyledText className="text-gray-300 mt-4 text-sm font-semibold">
@@ -55,7 +47,7 @@ export default function Index() {
       <StyledView className="flex-row justify-center items-center mt-10">
         <StyledText className="text-gray-400 mr-2">Masz już konto?</StyledText>
         <StyledOpacity onPress={handleRouteLogin}>
-          <StyledText className="text-green-400 underline">
+          <StyledText className="text-button-primary underline">
             Zaloguj się
           </StyledText>
         </StyledOpacity>
