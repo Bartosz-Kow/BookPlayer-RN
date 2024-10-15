@@ -18,7 +18,7 @@ const Author = ({ name, image }: AuthorProps) => {
   };
 
   return (
-    <StyledView className="items-center mx-2 mt-2">
+    <StyledView className="items-center mx-2 mt-2 mb-2">
       <StyledOpacity
         onPress={handlePress}
         className={`border rounded-full p-[3px]`}

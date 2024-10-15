@@ -6,6 +6,7 @@ import DonateImage from "@/components/HomeComponents/DonateImage";
 import { ScrollView, FlatList } from "react-native";
 import { fetchAllBooks } from "@/components/API/getBookList";
 import BookItem from "@/components/HomeComponents/BookItem";
+import CategoryChips from "@/components/HomeComponents/CategoryChips";
 
 const Index: React.FC = () => {
   const [booksData, setBooksData] = useState<any>({});
@@ -34,6 +35,7 @@ const Index: React.FC = () => {
       <Header />
       <ScrollView>
         <AuthorList />
+        <CategoryChips />
         <DonateImage />
         <StyledText className="font-sniglet text-center color-text-primary text-base">
           Wolne książki na cały rok do słuchania
