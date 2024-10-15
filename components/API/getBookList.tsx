@@ -1,47 +1,34 @@
-import axios from "axios";
+// src/components/API/bookFetchers.ts
+
 import {
-  wolneKsiazkiEndpoints,
-  poetkiZagladyEndpoints,
-  bajkiBajeczkiEndpoints,
-  biblioteczkaAntycznaEndpoints,
-} from "./endpoints";
+  fetchWolneKsiazki,
+  fetchPoetkiZaglady,
+  fetchBajkiBajeczki,
+  fetchBiblioteczkAntyczna,
+} from "@/components/API/fetchBookList";
 
-type ApiCallParams = {
-  endpoint: string;
-  params?: object;
-};
-
-export const apiCall = async ({
-  endpoint,
-  params,
-}: ApiCallParams): Promise<any> => {
-  const options = {
-    method: "GET",
-    url: endpoint,
-    params: params ? params : {},
+export const fetchAllBooks = async () => {
+  const results = {
+    wolneKsiazki: [],
+    poetkiZaglady: [],
+    bajkiBajeczki: [],
+    biblioteczkaAntyczna: [],
   };
 
   try {
-    const response = await axios.request(options);
-    return response.data;
+    const wolneResponse = await fetchWolneKsiazki();
+    const poetkiResponse = await fetchPoetkiZaglady();
+    const bajkiResponse = await fetchBajkiBajeczki();
+    const biblioteczkaResponse = await fetchBiblioteczkAntyczna();
+
+    // Process each response
+    results.wolneKsiazki = wolneResponse.books || [];
+    results.poetkiZaglady = poetkiResponse.books || [];
+    results.bajkiBajeczki = bajkiResponse.books || [];
+    results.biblioteczkaAntyczna = biblioteczkaResponse.books || [];
   } catch (error) {
-    console.error("Error:", error);
-    return {};
+    console.error("Error fetching books:", error);
   }
-};
 
-export const fetchWolneKsiazki = () => {
-  return apiCall({ endpoint: wolneKsiazkiEndpoints });
-};
-
-export const fetchPoetkiZaglady = () => {
-  return apiCall({ endpoint: poetkiZagladyEndpoints });
-};
-
-export const fetchBajkiBajeczki = () => {
-  return apiCall({ endpoint: bajkiBajeczkiEndpoints });
-};
-
-export const fetchBiblioteczkAntyczna = () => {
-  return apiCall({ endpoint: bajkiBajeczkiEndpoints });
+  return results;
 };
