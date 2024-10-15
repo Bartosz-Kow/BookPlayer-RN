@@ -1,8 +1,6 @@
-// src/components/HomeComponents/Index.tsx
-
 import React, { useEffect, useState } from "react";
 import Header from "@/components/Header";
-import { StyledView } from "@/components/styledComponents";
+import { StyledText, StyledView } from "@/components/styledComponents";
 import AuthorList from "@/components/HomeComponents/AuthorList";
 import DonateImage from "@/components/HomeComponents/DonateImage";
 import { ScrollView, FlatList } from "react-native";
@@ -37,8 +35,9 @@ const Index: React.FC = () => {
       <ScrollView>
         <AuthorList />
         <DonateImage />
-
-        {/* FlatList for Wolne Książki */}
+        <StyledText className="font-sniglet text-center color-text-primary text-base">
+          Wolne książki na cały rok do słuchania
+        </StyledText>
         <FlatList
           data={booksData.wolneKsiazki}
           renderItem={renderItem}
@@ -47,8 +46,9 @@ const Index: React.FC = () => {
           contentContainerStyle={{ paddingHorizontal: 10 }}
           horizontal
         />
-
-        {/* FlatList for Poetki Zagłady */}
+        <StyledText className="font-sniglet text-center color-text-primary text-base">
+          Antologia Poetki Zagłady
+        </StyledText>
         <FlatList
           data={booksData.poetkiZaglady}
           renderItem={renderItem}
@@ -57,8 +57,10 @@ const Index: React.FC = () => {
           contentContainerStyle={{ paddingHorizontal: 10 }}
           horizontal
         />
+        <StyledText className="font-sniglet text-center color-text-primary text-base">
+          Baśnie, bajki, bajeczki
+        </StyledText>
 
-        {/* FlatList for Bajki Bajeczki */}
         <FlatList
           data={booksData.bajkiBajeczki}
           renderItem={renderItem}
@@ -67,8 +69,9 @@ const Index: React.FC = () => {
           contentContainerStyle={{ paddingHorizontal: 10 }}
           horizontal
         />
-
-        {/* FlatList for Biblioteczka Antyczna */}
+        <StyledText className="font-sniglet text-center color-text-primary text-base">
+          Biblioteczka antyczna
+        </StyledText>
         <FlatList
           data={booksData.biblioteczkaAntyczna}
           renderItem={renderItem}

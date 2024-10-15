@@ -10,7 +10,7 @@ const DonateImage = () => {
   };
   return (
     <StyledOpacity onPress={handlePress}>
-      <StyledView className="w-full h-[140px] justify-center items-center rounded-lg overflow-hidden">
+      <StyledView className="w-full h-[140px] justify-center items-center rounded-lg overflow-hidden mb-2">
         <Image
           source={require("../../assets/images/banner.webp")}
           style={[styles.bannerImage, { opacity: 0.3 }]}
