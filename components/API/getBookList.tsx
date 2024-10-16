@@ -1,5 +1,3 @@
-// src/components/API/bookFetchers.ts
-
 import {
   fetchWolneKsiazki,
   fetchPoetkiZaglady,
@@ -21,7 +19,6 @@ export const fetchAllBooks = async () => {
     const bajkiResponse = await fetchBajkiBajeczki();
     const biblioteczkaResponse = await fetchBiblioteczkAntyczna();
 
-    // Process each response
     results.wolneKsiazki = wolneResponse.books || [];
     results.poetkiZaglady = poetkiResponse.books || [];
     results.bajkiBajeczki = bajkiResponse.books || [];
