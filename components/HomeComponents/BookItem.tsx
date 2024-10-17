@@ -5,17 +5,26 @@ import {
   StyledText,
   StyledOpacity,
 } from "@/components/styledComponents";
+import { router } from "expo-router";
 
 interface BookItemProps {
   title: string;
   author: string;
   cover: string;
+  slug: string;
 }
 
-const BookItem: React.FC<BookItemProps> = ({ title, author, cover }) => {
+const BookItem: React.FC<BookItemProps> = ({ title, author, cover, slug }) => {
   return (
     <StyledView className="items-center mx-[10px] mb-4">
-      <StyledOpacity>
+      <StyledOpacity
+        onPress={() =>
+          router.push({
+            pathname: "/bookdetails",
+            params: { slug, title, author, cover },
+          })
+        }
+      >
         <Image
           source={{ uri: cover }}
           style={{ width: 120, height: 180, marginTop: 10 }}

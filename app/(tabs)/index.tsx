@@ -29,6 +29,7 @@ const Index: React.FC = () => {
         title={item.title}
         author={item.author}
         cover={item.cover_thumb}
+        slug={item.slug}
       />
     );
   };

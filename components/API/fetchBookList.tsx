@@ -4,6 +4,7 @@ import {
   poetkiZagladyEndpoints,
   bajkiBajeczkiEndpoints,
   biblioteczkaAntycznaEndpoints,
+  BASIC_URL,
 } from "./endpoints";
 
 type ApiCallParams = {
@@ -44,4 +45,8 @@ export const fetchBajkiBajeczki = () => {
 
 export const fetchBiblioteczkAntyczna = () => {
   return apiCall({ endpoint: biblioteczkaAntycznaEndpoints });
+};
+export const fetchBookDetails = (slug: string) => {
+  const endpoint = `${BASIC_URL}/api/books/${slug}/`;
+  return apiCall({ endpoint });
 };
