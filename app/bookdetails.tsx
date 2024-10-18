@@ -1,4 +1,3 @@
-// BookDetails.tsx
 import React, { useEffect, useState } from "react";
 import { Image, Text, ActivityIndicator, TouchableOpacity } from "react-native";
 import { StyledText, StyledView } from "@/components/styledComponents";
@@ -6,6 +5,7 @@ import { useLocalSearchParams } from "expo-router";
 import { fetchBookDetails } from "@/components/API/fetchBookList";
 import { Icon } from "react-native-paper";
 import MediaList from "@/components/DetailsComponents/MediaList";
+import BookCategories from "@/components/DetailsComponents/bookCategories";
 
 interface MediaItem {
   url: string;
@@ -59,7 +59,6 @@ const BookDetails = () => {
 
   const handlePlayPress = (url: string) => {
     console.log(`Odtwarzam media z URL: ${url}`);
-    // Tutaj możesz dodać logikę odtwarzania
   };
 
   if (loading) {
@@ -128,12 +127,12 @@ const BookDetails = () => {
       <StyledText className="text-center text-white">
         {book.kinds.join(", ")}
       </StyledText>
-      <StyledText className="text-center text-white">{book.epoch}</StyledText>
+
       <StyledText className="text-center text-white">{book.title}</StyledText>
       <StyledText className="text-center text-white">
         Krótko o książce
       </StyledText>
-
+      <BookCategories />
       <MediaList mediaData={mp3Media} onPlayPress={handlePlayPress} />
     </StyledView>
   );

@@ -1,4 +1,3 @@
-// MediaList.tsx
 import React from "react";
 import { FlatList, TouchableOpacity } from "react-native";
 import { StyledText, StyledView } from "@/components/styledComponents";
