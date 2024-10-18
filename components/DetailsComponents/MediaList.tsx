@@ -18,7 +18,7 @@ interface MediaListProps {
 
 const MediaList: React.FC<MediaListProps> = ({ mediaData, onPlayPress }) => {
   const renderMediaItem = ({ item }: { item: MediaItem }) => (
-    <StyledView className="p-4 flex-row items-center justify-between">
+    <StyledView className="p-4 flex-row items-center justify-between bg-background">
       <StyledView className="flex-1">
         <StyledText className="text-white font-candal text-base text-center">
           {item.name}

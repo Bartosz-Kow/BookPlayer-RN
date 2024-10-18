@@ -101,10 +101,13 @@ const BookDetails = () => {
             marginHorizontal: 5,
             flexDirection: "row",
             alignItems: "center",
+            width: "49%",
           }}
         >
           <Icon source="book" size={20} color="#000" />
-          <Text style={{ marginLeft: 5, color: "#000" }}>Książka</Text>
+          <StyledText className="text-black font-bold m-1 text-center">
+            KSIĄŻKA
+          </StyledText>
         </TouchableOpacity>
 
         <TouchableOpacity
@@ -116,21 +119,19 @@ const BookDetails = () => {
             marginHorizontal: 5,
             flexDirection: "row",
             alignItems: "center",
+            width: "49%",
           }}
         >
           <Icon source="headphones" size={20} color="#000" />
-          <Text style={{ marginLeft: 5, color: "#000" }}>Audiobook</Text>
+          <StyledText className="text-black font-bold m-1 text-center">
+            Audiobook
+          </StyledText>
         </TouchableOpacity>
       </StyledView>
+      <StyledText className="text-center text-white"></StyledText>
 
-      <StyledText className="text-center text-white">{book.author}</StyledText>
-      <StyledText className="text-center text-white">
-        {book.kinds.join(", ")}
-      </StyledText>
-
-      <StyledText className="text-center text-white">{book.title}</StyledText>
-      <StyledText className="text-center text-white">
-        Krótko o książce
+      <StyledText className="text-center text-white font-candal text-xl">
+        {book.title}
       </StyledText>
       <BookCategories />
       <MediaList mediaData={mp3Media} onPlayPress={handlePlayPress} />

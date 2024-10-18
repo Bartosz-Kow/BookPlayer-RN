@@ -32,6 +32,7 @@ const Index: React.FC = () => {
         bookSlug={item.slug}
         epoch={item.epoch}
         kinds={item.kind}
+        genre={item.genre}
       />
     );
   };
