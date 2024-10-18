@@ -30,6 +30,8 @@ const Index: React.FC = () => {
         author={item.author}
         cover={item.cover_thumb}
         bookSlug={item.slug}
+        epoch={item.epoch}
+        kinds={item.kind}
       />
     );
   };

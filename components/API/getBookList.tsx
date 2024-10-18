@@ -14,15 +14,18 @@ export const fetchAllBooks = async () => {
   };
 
   try {
-    const wolneResponse = await fetchWolneKsiazki();
-    const poetkiResponse = await fetchPoetkiZaglady();
-    const bajkiResponse = await fetchBajkiBajeczki();
-    const biblioteczkaResponse = await fetchBiblioteczkAntyczna();
+    const [wolneResponse, poetkiResponse, bajkiResponse, biblioteczkaResponse] =
+      await Promise.all([
+        fetchWolneKsiazki(),
+        fetchPoetkiZaglady(),
+        fetchBajkiBajeczki(),
+        fetchBiblioteczkAntyczna(),
+      ]);
 
-    results.wolneKsiazki = wolneResponse.books || [];
-    results.poetkiZaglady = poetkiResponse.books || [];
-    results.bajkiBajeczki = bajkiResponse.books || [];
-    results.biblioteczkaAntyczna = biblioteczkaResponse.books || [];
+    results.wolneKsiazki = wolneResponse?.books || [];
+    results.poetkiZaglady = poetkiResponse?.books || [];
+    results.bajkiBajeczki = bajkiResponse?.books || [];
+    results.biblioteczkaAntyczna = biblioteczkaResponse?.books || [];
   } catch (error) {
     console.error("Error fetching books:", error);
   }

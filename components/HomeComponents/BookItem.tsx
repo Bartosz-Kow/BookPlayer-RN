@@ -12,6 +12,8 @@ interface BookItemProps {
   author: string;
   cover: string;
   bookSlug: string;
+  epoch: string;
+  kinds: string;
 }
 
 const BookItem: React.FC<BookItemProps> = ({
@@ -19,6 +21,8 @@ const BookItem: React.FC<BookItemProps> = ({
   author,
   cover,
   bookSlug,
+  epoch,
+  kinds,
 }) => {
   return (
     <StyledView className="items-center mx-[10px] mb-4">
@@ -26,7 +30,7 @@ const BookItem: React.FC<BookItemProps> = ({
         onPress={() =>
           router.push({
             pathname: "/bookdetails",
-            params: { bookSlug, title, author, cover },
+            params: { bookSlug, title, author, cover, epoch, kinds },
           })
         }
       >

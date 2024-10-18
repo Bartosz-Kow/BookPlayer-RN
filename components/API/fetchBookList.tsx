@@ -31,20 +31,40 @@ export const apiCall = async ({
   }
 };
 
-export const fetchWolneKsiazki = () => {
-  return apiCall({ endpoint: wolneKsiazkiEndpoints });
+export const fetchWolneKsiazki = async () => {
+  const response = await apiCall({ endpoint: wolneKsiazkiEndpoints });
+
+  return {
+    ...response,
+    books: response.books.filter((book: any) => book.has_audio === true),
+  };
 };
 
-export const fetchPoetkiZaglady = () => {
-  return apiCall({ endpoint: poetkiZagladyEndpoints });
+export const fetchPoetkiZaglady = async () => {
+  const response = await apiCall({ endpoint: poetkiZagladyEndpoints });
+
+  return {
+    ...response,
+    books: response.books.filter((book: any) => book.has_audio === true),
+  };
 };
 
-export const fetchBajkiBajeczki = () => {
-  return apiCall({ endpoint: bajkiBajeczkiEndpoints });
+export const fetchBajkiBajeczki = async () => {
+  const response = await apiCall({ endpoint: bajkiBajeczkiEndpoints });
+
+  return {
+    ...response,
+    books: response.books.filter((book: any) => book.has_audio === true),
+  };
 };
 
-export const fetchBiblioteczkAntyczna = () => {
-  return apiCall({ endpoint: biblioteczkaAntycznaEndpoints });
+export const fetchBiblioteczkAntyczna = async () => {
+  const response = await apiCall({ endpoint: biblioteczkaAntycznaEndpoints });
+
+  return {
+    ...response,
+    books: response.books.filter((book: any) => book.has_audio === true),
+  };
 };
 export const fetchBookDetails = async (slug: string) => {
   const endpoint = `${BASIC_URL}/api/books/${slug}/`;
