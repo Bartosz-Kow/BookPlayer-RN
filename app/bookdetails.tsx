@@ -1,29 +1,26 @@
 import React, { useEffect, useState } from "react";
-import { Image, Text, ActivityIndicator } from "react-native";
-import { StyledView } from "@/components/styledComponents";
+import { Image, Text, ActivityIndicator, TouchableOpacity } from "react-native";
+import { StyledText, StyledView } from "@/components/styledComponents";
 import { useLocalSearchParams } from "expo-router";
 import { fetchBookDetails } from "@/components/API/fetchBookList";
-
-// Typ dla książki
-interface Author {
-  name: string;
-}
+import { Icon } from "react-native-paper";
 
 interface Book {
   title: string;
   cover: string;
-  authors: Author[];
+  author: string;
 }
 
 const BookDetails = () => {
-  const { slug } = useLocalSearchParams();
+  const { bookSlug, author } = useLocalSearchParams();
   const [book, setBook] = useState<Book | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const loadBookDetails = async () => {
       try {
-        const bookDetails = await fetchBookDetails(slug as string);
+        const bookDetails = await fetchBookDetails(bookSlug as string);
+        console.log(bookDetails);
         setBook(bookDetails);
       } catch (error) {
         console.error(error);
@@ -33,7 +30,15 @@ const BookDetails = () => {
     };
 
     loadBookDetails();
-  }, [slug]);
+  }, [bookSlug]);
+
+  const handleBookPress = () => {
+    console.log("Książka została wybrana");
+  };
+
+  const handleAudiobookPress = () => {
+    console.log("Audiobook został wybrany");
+  };
 
   if (loading) {
     return (
@@ -52,40 +57,54 @@ const BookDetails = () => {
   }
 
   return (
-    <StyledView className="bg-background flex-1 p-4">
+    <StyledView className="bg-background flex-1">
       <Image
         source={{ uri: book.cover }}
-        style={{ width: 200, height: 300, alignSelf: "center" }}
-        resizeMode="contain"
+        style={{ width: "100%", height: 300, alignSelf: "center" }}
       />
-
-      <Text
+      <StyledView
         style={{
-          color: "white",
-          fontSize: 24,
-          textAlign: "center",
-          marginVertical: 10,
-        }}
-      >
-        {book.title}
-      </Text>
-
-      <Text style={{ color: "gray", fontSize: 18, textAlign: "center" }}>
-        {book.authors && book.authors.length > 0
-          ? book.authors[0].name
-          : "Nieznany autor"}
-      </Text>
-
-      <Text
-        style={{
-          color: "#CDE7BE",
-          fontSize: 16,
-          textAlign: "center",
+          flexDirection: "row",
+          justifyContent: "center",
           marginTop: 20,
         }}
       >
-        Slug: {slug}
-      </Text>
+        <TouchableOpacity
+          onPress={handleBookPress}
+          style={{
+            padding: 15,
+            backgroundColor: "#CDE7BE",
+            borderRadius: 5,
+            marginHorizontal: 5,
+            flexDirection: "row",
+            alignItems: "center",
+          }}
+        >
+          <Icon source="book" size={20} color="#000" />
+          <Text style={{ marginLeft: 5, color: "#000" }}>Książka</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={handleAudiobookPress}
+          style={{
+            padding: 15,
+            backgroundColor: "#CDE7BE",
+            borderRadius: 5,
+            marginHorizontal: 5,
+            flexDirection: "row",
+            alignItems: "center",
+          }}
+        >
+          <Icon source="headphones" size={20} color="#000" />
+          <Text style={{ marginLeft: 5, color: "#000" }}>Audiobook</Text>
+        </TouchableOpacity>
+      </StyledView>
+
+      <StyledText className="text-center text-white">{author}</StyledText>
+      <StyledText className="text-center text-white">{book.title}</StyledText>
+      <StyledText className="text-center text-white">
+        Krótko o książce
+      </StyledText>
     </StyledView>
   );
 };

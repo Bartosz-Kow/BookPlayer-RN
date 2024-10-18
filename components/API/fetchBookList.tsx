@@ -46,7 +46,24 @@ export const fetchBajkiBajeczki = () => {
 export const fetchBiblioteczkAntyczna = () => {
   return apiCall({ endpoint: biblioteczkaAntycznaEndpoints });
 };
-export const fetchBookDetails = (slug: string) => {
+export const fetchBookDetails = async (slug: string) => {
   const endpoint = `${BASIC_URL}/api/books/${slug}/`;
-  return apiCall({ endpoint });
+  const response = await apiCall({ endpoint });
+
+  return {
+    ...response,
+    bookId: response.slug,
+    slug: undefined,
+  };
+};
+
+export const fetchAuthorDetails = async (slug: string) => {
+  const endpoint = `${BASIC_URL}/api/authors/${slug}`;
+  const response = await apiCall({ endpoint });
+
+  return {
+    ...response,
+    authorId: response.slug,
+    slug: undefined,
+  };
 };

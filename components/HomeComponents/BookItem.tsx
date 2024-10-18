@@ -11,17 +11,22 @@ interface BookItemProps {
   title: string;
   author: string;
   cover: string;
-  slug: string;
+  bookSlug: string;
 }
 
-const BookItem: React.FC<BookItemProps> = ({ title, author, cover, slug }) => {
+const BookItem: React.FC<BookItemProps> = ({
+  title,
+  author,
+  cover,
+  bookSlug,
+}) => {
   return (
     <StyledView className="items-center mx-[10px] mb-4">
       <StyledOpacity
         onPress={() =>
           router.push({
             pathname: "/bookdetails",
-            params: { slug, title, author, cover },
+            params: { bookSlug, title, author, cover },
           })
         }
       >
