@@ -6,6 +6,7 @@ import { fetchBookDetails } from "@/components/API/fetchBookList";
 import { Icon } from "react-native-paper";
 import MediaList from "@/components/DetailsComponents/MediaList";
 import BookCategories from "@/components/DetailsComponents/bookCategories";
+import { useRouter } from "expo-router";
 
 interface MediaItem {
   url: string;
@@ -32,12 +33,11 @@ const BookDetails = () => {
   const { bookSlug } = useLocalSearchParams();
   const [book, setBook] = useState<Book | null>(null);
   const [loading, setLoading] = useState(true);
-
+  const router = useRouter();
   useEffect(() => {
     const loadBookDetails = async () => {
       try {
         const bookDetails = await fetchBookDetails(bookSlug as string);
-        console.log("Pełne szczegóły książki:", bookDetails);
         setBook(bookDetails);
       } catch (error) {
         console.error(error);
@@ -50,7 +50,10 @@ const BookDetails = () => {
   }, [bookSlug]);
 
   const handleBookPress = () => {
-    console.log("Książka została wybrana");
+    router.push({
+      pathname: "/readbook",
+      params: { bookSlug },
+    });
   };
 
   const handleAudiobookPress = () => {

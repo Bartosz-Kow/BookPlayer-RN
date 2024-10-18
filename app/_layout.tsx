@@ -8,6 +8,7 @@ export default function RootLayout() {
       <Stack.Screen name="register" options={{ headerShown: false }} />
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       <Stack.Screen name="bookdetails" options={{ headerShown: false }} />
+      <Stack.Screen name="readbook" options={{ headerShown: false }} />
     </Stack>
   );
 }
