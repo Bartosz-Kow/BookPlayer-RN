@@ -1,15 +1,11 @@
+// BookDetails.tsx
 import React, { useEffect, useState } from "react";
-import {
-  Image,
-  Text,
-  ActivityIndicator,
-  TouchableOpacity,
-  FlatList,
-} from "react-native";
+import { Image, Text, ActivityIndicator, TouchableOpacity } from "react-native";
 import { StyledText, StyledView } from "@/components/styledComponents";
 import { useLocalSearchParams } from "expo-router";
 import { fetchBookDetails } from "@/components/API/fetchBookList";
 import { Icon } from "react-native-paper";
+import MediaList from "@/components/DetailsComponents/MediaList";
 
 interface MediaItem {
   url: string;
@@ -33,7 +29,7 @@ interface Book {
 }
 
 const BookDetails = () => {
-  const { bookSlug, epoch, kinds } = useLocalSearchParams();
+  const { bookSlug } = useLocalSearchParams();
   const [book, setBook] = useState<Book | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -61,6 +57,11 @@ const BookDetails = () => {
     console.log("Audiobook został wybrany");
   };
 
+  const handlePlayPress = (url: string) => {
+    console.log(`Odtwarzam media z URL: ${url}`);
+    // Tutaj możesz dodać logikę odtwarzania
+  };
+
   if (loading) {
     return (
       <StyledView className="bg-background flex-1 justify-center items-center">
@@ -78,21 +79,6 @@ const BookDetails = () => {
   }
 
   const mp3Media = book.media.filter((item) => item.type === "mp3");
-
-  const renderMediaItem = ({ item }: { item: MediaItem }) => (
-    <StyledView
-      style={{
-        padding: 10,
-        backgroundColor: "#CDE7BE",
-        borderRadius: 5,
-        marginVertical: 5,
-      }}
-    >
-      <Text style={{ color: "#000" }}>{item.name}</Text>
-      <Text style={{ color: "#000" }}>Reżyser: {item.director}</Text>
-      <Text style={{ color: "#000" }}>Artysta: {item.artist}</Text>
-    </StyledView>
-  );
 
   return (
     <StyledView className="bg-background flex-1">
@@ -147,11 +133,8 @@ const BookDetails = () => {
       <StyledText className="text-center text-white">
         Krótko o książce
       </StyledText>
-      <FlatList
-        data={mp3Media}
-        renderItem={renderMediaItem}
-        keyExtractor={(item) => item.url}
-      />
+
+      <MediaList mediaData={mp3Media} onPlayPress={handlePlayPress} />
     </StyledView>
   );
 };
