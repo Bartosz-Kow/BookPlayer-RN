@@ -19,7 +19,7 @@ interface MediaItem {
 interface Book {
   title: string;
   cover: string;
-  author: string;
+  authors: { name: string }[]; // Zmienione z author na authors
   epoch: string;
   kinds: string[];
   translators: { name: string }[];
@@ -30,14 +30,16 @@ interface Book {
 }
 
 const BookDetails = () => {
-  const { bookSlug } = useLocalSearchParams();
+  const { bookSlug } = useLocalSearchParams(); // Usuń author z tu
   const [book, setBook] = useState<Book | null>(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
+
   useEffect(() => {
     const loadBookDetails = async () => {
       try {
         const bookDetails = await fetchBookDetails(bookSlug as string);
+        console.log("Book details:", bookDetails);
         setBook(bookDetails);
       } catch (error) {
         console.error(error);
@@ -55,11 +57,17 @@ const BookDetails = () => {
       params: { bookSlug },
     });
   };
+
   const handleAudiobookPress = () => {
     if (book && book.cover) {
       router.push({
         pathname: "/playbook",
-        params: { bookSlug, cover: book.cover },
+        params: {
+          bookSlug,
+          cover: book.cover,
+          title: book.title,
+          author: book.authors[0]?.name, // Użycie autora z book
+        },
       });
     }
   };
@@ -135,10 +143,12 @@ const BookDetails = () => {
           </StyledText>
         </TouchableOpacity>
       </StyledView>
-      <StyledText className="text-center text-white"></StyledText>
 
       <StyledText className="text-center text-white font-candal text-xl">
         {book.title}
+      </StyledText>
+      <StyledText className="text-center text-white">
+        {book.authors[0]?.name}
       </StyledText>
       <BookCategories />
       <MediaList mediaData={mp3Media} onPlayPress={handlePlayPress} />
