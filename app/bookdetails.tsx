@@ -55,9 +55,13 @@ const BookDetails = () => {
       params: { bookSlug },
     });
   };
-
   const handleAudiobookPress = () => {
-    console.log("Audiobook został wybrany");
+    if (book && book.cover) {
+      router.push({
+        pathname: "/playbook",
+        params: { bookSlug, cover: book.cover },
+      });
+    }
   };
 
   const handlePlayPress = (url: string) => {

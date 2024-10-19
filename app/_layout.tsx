@@ -9,6 +9,7 @@ export default function RootLayout() {
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       <Stack.Screen name="bookdetails" options={{ headerShown: false }} />
       <Stack.Screen name="readbook" options={{ headerShown: false }} />
+      <Stack.Screen name="playbook" options={{ headerShown: false }} />
     </Stack>
   );
 }
