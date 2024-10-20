@@ -38,9 +38,16 @@ const BottomBook = () => {
         ].map((icon, index) => (
           <StyledOpacity
             key={index}
-            className="rounded-full p-2 flex-1 items-center"
+            className={`rounded-full p-2 flex-1 items-center ${
+              icon === "play" ? "play-button-container" : ""
+            }`}
+            style={icon === "play" ? styles.playButtonContainer : {}}
           >
-            <Icon source={icon} size={30} color="#EAF4F4" />
+            <Icon
+              source={icon}
+              size={icon === "play" ? 50 : 30}
+              color={icon === "play" ? styles.playButton.color : "#EAF4F4"}
+            />
           </StyledOpacity>
         ))}
       </StyledView>
@@ -55,6 +62,14 @@ const BottomBook = () => {
 const styles = StyleSheet.create({
   slider: {
     height: 40,
+  },
+  playButtonContainer: {
+    backgroundColor: "#CDE7BE",
+    borderRadius: 50,
+    padding: 5,
+  },
+  playButton: {
+    color: "#333",
   },
 });
 

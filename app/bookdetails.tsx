@@ -19,7 +19,7 @@ interface MediaItem {
 interface Book {
   title: string;
   cover: string;
-  authors: { name: string }[]; // Zmienione z author na authors
+  authors: { name: string }[];
   epoch: string;
   kinds: string[];
   translators: { name: string }[];
@@ -30,7 +30,7 @@ interface Book {
 }
 
 const BookDetails = () => {
-  const { bookSlug } = useLocalSearchParams(); // Usuń author z tu
+  const { bookSlug } = useLocalSearchParams();
   const [book, setBook] = useState<Book | null>(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
@@ -66,7 +66,7 @@ const BookDetails = () => {
           bookSlug,
           cover: book.cover,
           title: book.title,
-          author: book.authors[0]?.name, // Użycie autora z book
+          author: book.authors[0]?.name,
         },
       });
     }
@@ -119,7 +119,7 @@ const BookDetails = () => {
             width: "49%",
           }}
         >
-          <Icon source="book" size={20} color="#000" />
+          <Icon source="book-open-outline" size={20} color="#000" />
           <StyledText className="text-black font-bold m-1 text-center">
             KSIĄŻKA
           </StyledText>
