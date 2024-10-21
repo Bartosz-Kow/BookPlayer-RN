@@ -3,7 +3,7 @@ import { StyleSheet, View, Image } from "react-native";
 import { useLocalSearchParams } from "expo-router";
 import { StyledText } from "@/components/styledComponents";
 import BottomBook from "@/components/bottomBook";
-
+import UpsideBook from "@/components/upsideBook";
 const Playbook: React.FC = () => {
   const { cover, bookSlug, title, author } = useLocalSearchParams();
 
@@ -11,6 +11,7 @@ const Playbook: React.FC = () => {
 
   return (
     <View style={styles.container}>
+      <UpsideBook />
       <View style={styles.imageContainer}>
         {coverUri ? (
           <>
