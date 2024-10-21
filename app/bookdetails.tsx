@@ -151,7 +151,11 @@ const BookDetails = () => {
         {book.authors[0]?.name}
       </StyledText>
       <BookCategories />
-      <MediaList mediaData={mp3Media} onPlayPress={handlePlayPress} />
+      <MediaList
+        mediaData={mp3Media}
+        onPlayPress={handlePlayPress}
+        bookData={book.cover}
+      />
     </StyledView>
   );
 };

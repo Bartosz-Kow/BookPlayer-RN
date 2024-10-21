@@ -4,6 +4,9 @@ import { StyledText, StyledView } from "@/components/styledComponents";
 import { Icon } from "react-native-paper";
 import { useRouter } from "expo-router";
 
+interface Book {
+  cover: string;
+}
 interface MediaItem {
   url: string;
   director: string;
@@ -14,10 +17,15 @@ interface MediaItem {
 
 interface MediaListProps {
   mediaData: MediaItem[];
+  bookData: string;
   onPlayPress: (url: string) => void;
 }
 
-const MediaList: React.FC<MediaListProps> = ({ mediaData, onPlayPress }) => {
+const MediaList: React.FC<MediaListProps> = ({
+  mediaData,
+  onPlayPress,
+  bookData,
+}) => {
   const router = useRouter();
 
   const handleAudioBookPress = (item: MediaItem) => {
@@ -29,6 +37,7 @@ const MediaList: React.FC<MediaListProps> = ({ mediaData, onPlayPress }) => {
         director: item.director,
         name: item.name,
         artist: item.artist,
+        cover: bookData,
       },
     });
   };

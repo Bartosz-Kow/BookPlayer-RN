@@ -5,7 +5,7 @@ import { StyledText } from "@/components/styledComponents";
 import BottomBook from "@/components/bottomBook";
 import UpsideBook from "@/components/upsideBook";
 const Playbook: React.FC = () => {
-  const { cover, bookSlug, title, author } = useLocalSearchParams();
+  const { cover } = useLocalSearchParams();
 
   const coverUri = Array.isArray(cover) ? cover[0] : cover;
 
@@ -21,6 +21,7 @@ const Playbook: React.FC = () => {
               style={styles.innerImage}
               resizeMode="contain"
             />
+            {console.log(coverUri)}
           </>
         ) : (
           <StyledText>No cover available</StyledText>

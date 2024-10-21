@@ -6,15 +6,18 @@ import Slider from "@react-native-community/slider";
 import { useLocalSearchParams } from "expo-router";
 
 const BottomBook = () => {
-  const { title, author } = useLocalSearchParams();
+  const { url, director, name, artist } = useLocalSearchParams();
   return (
     <>
       <StyledView className="flex-start items-start w-full px-4 sm:px-6 lg:px-8">
         <StyledText className="font-candal text-white text-base sm:text-lg lg:text-xl">
-          {title}
+          {name}
         </StyledText>
         <StyledText className="font-baskerville text-white text-sm sm:text-base lg:text-lg">
-          {author}
+          Reżyser: {director}
+        </StyledText>
+        <StyledText className="font-baskerville text-white text-sm sm:text-base lg:text-lg">
+          Artysta: {artist}
         </StyledText>
       </StyledView>
       <StyledView className="w-full px-4">
@@ -66,7 +69,6 @@ const styles = StyleSheet.create({
   playButtonContainer: {
     backgroundColor: "#CDE7BE",
     borderRadius: 50,
-    padding: 5,
   },
   playButton: {
     color: "#333",
