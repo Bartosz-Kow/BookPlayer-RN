@@ -2,6 +2,7 @@ import React from "react";
 import { FlatList, TouchableOpacity } from "react-native";
 import { StyledText, StyledView } from "@/components/styledComponents";
 import { Icon } from "react-native-paper";
+import { useRouter } from "expo-router";
 
 interface MediaItem {
   url: string;
@@ -17,6 +18,21 @@ interface MediaListProps {
 }
 
 const MediaList: React.FC<MediaListProps> = ({ mediaData, onPlayPress }) => {
+  const router = useRouter();
+
+  const handleAudioBookPress = (item: MediaItem) => {
+    console.log(item.url);
+    router.push({
+      pathname: "/playbook",
+      params: {
+        url: item.url,
+        director: item.director,
+        name: item.name,
+        artist: item.artist,
+      },
+    });
+  };
+
   const renderMediaItem = ({ item }: { item: MediaItem }) => (
     <StyledView className="p-4 flex-row items-center justify-between bg-background">
       <StyledView className="flex-1">
@@ -31,7 +47,7 @@ const MediaList: React.FC<MediaListProps> = ({ mediaData, onPlayPress }) => {
         </StyledText>
       </StyledView>
       <TouchableOpacity
-        onPress={() => onPlayPress(item.url)}
+        onPress={() => handleAudioBookPress(item)}
         style={{
           padding: 10,
           backgroundColor: "#CDE7BE",
