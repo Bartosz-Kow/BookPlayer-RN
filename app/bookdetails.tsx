@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Image, Text, ActivityIndicator, TouchableOpacity } from "react-native";
-import { StyledText, StyledView } from "@/components/styledComponents";
+import {
+  StyledOpacity,
+  StyledText,
+  StyledView,
+} from "@/components/styledComponents";
 import { useLocalSearchParams } from "expo-router";
 import { fetchBookDetails } from "@/components/API/fetchBookList";
 import { Icon } from "react-native-paper";
@@ -73,7 +77,7 @@ const BookDetails = () => {
   };
 
   const handlePlayPress = (url: string) => {
-    console.log(`Odtwarzam media z URL: ${url}`);
+    console.log(`Playing media from URL: ${url}`);
   };
 
   if (loading) {
@@ -87,7 +91,7 @@ const BookDetails = () => {
   if (!book) {
     return (
       <StyledView className="bg-background flex-1 justify-center items-center">
-        <Text style={{ color: "red" }}>Nie znaleziono szczegółów książki.</Text>
+        <Text style={{ color: "red" }}>Book details not found.</Text>
       </StyledView>
     );
   }
@@ -96,60 +100,43 @@ const BookDetails = () => {
 
   return (
     <StyledView className="bg-background flex-1">
-      <Image
-        source={{ uri: book.cover }}
-        style={{ width: "100%", height: 300, alignSelf: "center" }}
-      />
-      <StyledView
-        style={{
-          flexDirection: "row",
-          justifyContent: "center",
-          marginTop: 20,
-        }}
-      >
-        <TouchableOpacity
-          onPress={handleBookPress}
-          style={{
-            padding: 15,
-            backgroundColor: "#CDE7BE",
-            borderRadius: 5,
-            marginHorizontal: 5,
-            flexDirection: "row",
-            alignItems: "center",
-            width: "49%",
-          }}
-        >
-          <Icon source="book-open-outline" size={20} color="#000" />
-          <StyledText className="text-black font-bold m-1 text-center">
-            KSIĄŻKA
-          </StyledText>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          onPress={handleAudiobookPress}
-          style={{
-            padding: 15,
-            backgroundColor: "#CDE7BE",
-            borderRadius: 5,
-            marginHorizontal: 5,
-            flexDirection: "row",
-            alignItems: "center",
-            width: "49%",
-          }}
-        >
-          <Icon source="headphones" size={20} color="#000" />
-          <StyledText className="text-black font-bold m-1 text-center">
-            Audiobook
-          </StyledText>
-        </TouchableOpacity>
+      <StyledView className="w-full h-72 rounded-b-2xl overflow-hidden mb-5 shadow-md">
+        <Image
+          source={{ uri: book.cover }}
+          style={{ width: "100%", height: "100%" }}
+          resizeMode="cover"
+        />
       </StyledView>
 
-      <StyledText className="text-center text-white font-candal text-xl">
+      <StyledView className="flex-row justify-center mt-5">
+        <StyledOpacity
+          onPress={handleBookPress}
+          className="p-4 bg-[#CDE7BE] rounded-lg mx-1 flex-row items-center shadow-md"
+        >
+          <Icon source="book-open-outline" size={20} color="#000" />
+          <StyledText className="text-black font-bold mx-1 text-center">
+            KSIĄŻKA
+          </StyledText>
+        </StyledOpacity>
+
+        <StyledOpacity
+          onPress={handleAudiobookPress}
+          className="p-4 bg-[#CDE7BE] rounded-lg mx-1 flex-row items-center shadow-md"
+        >
+          <Icon source="headphones" size={20} color="#000" />
+          <StyledText className="text-black font-bold mx-1 text-center">
+            Audiobook
+          </StyledText>
+        </StyledOpacity>
+      </StyledView>
+
+      <StyledText className="text-center text-white font-candal text-2xl mt-4">
         {book.title}
       </StyledText>
-      <StyledText className="text-center text-white">
+      <StyledText className="text-center text-white text-lg">
         {book.authors[0]?.name}
       </StyledText>
+
       <BookCategories />
       <MediaList
         mediaData={mp3Media}

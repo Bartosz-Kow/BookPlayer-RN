@@ -1,18 +1,18 @@
 import React from "react";
-import { StyleSheet, View, Image } from "react-native";
+import { Image, StyleSheet } from "react-native";
 import { useLocalSearchParams } from "expo-router";
-import { StyledText } from "@/components/styledComponents";
+import { StyledText, StyledView } from "@/components/styledComponents";
 import BottomBook from "@/components/bottomBook";
 import UpsideBook from "@/components/upsideBook";
+
 const Playbook: React.FC = () => {
   const { cover } = useLocalSearchParams();
-
   const coverUri = Array.isArray(cover) ? cover[0] : cover;
 
   return (
-    <View style={styles.container}>
+    <StyledView className="flex-1 justify-between p-2 bg-[#181A1A]">
       <UpsideBook />
-      <View style={styles.imageContainer}>
+      <StyledView className="w-full h-96 relative justify-center items-center bg-[#282828] rounded-b-2xl mt-5 pt-5">
         {coverUri ? (
           <>
             <Image source={{ uri: coverUri }} style={styles.coverImage} />
@@ -21,32 +21,17 @@ const Playbook: React.FC = () => {
               style={styles.innerImage}
               resizeMode="contain"
             />
-            {console.log(coverUri)}
           </>
         ) : (
           <StyledText>No cover available</StyledText>
         )}
-      </View>
+      </StyledView>
       <BottomBook />
-    </View>
+    </StyledView>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 2,
-    backgroundColor: "#181A1A",
-  },
-  imageContainer: {
-    width: "100%",
-    height: 300,
-    position: "relative",
-    justifyContent: "center",
-    alignItems: "center",
-  },
   coverImage: {
     width: "100%",
     height: "100%",
