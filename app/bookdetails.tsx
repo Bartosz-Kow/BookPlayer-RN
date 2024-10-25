@@ -138,6 +138,9 @@ const BookDetails = () => {
       </StyledText>
 
       <BookCategories />
+      <StyledText className="text-center text-button-primary font-sniglet text-xl mt-4">
+        AudioBooki
+      </StyledText>
       <MediaList
         mediaData={mp3Media}
         onPlayPress={handlePlayPress}

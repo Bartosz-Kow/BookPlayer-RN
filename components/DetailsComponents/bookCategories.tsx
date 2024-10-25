@@ -8,7 +8,7 @@ const BookCategories = () => {
   const { epoch, kinds, genre } = useLocalSearchParams();
 
   return (
-    <StyledView className="flex-row mt-1 ml-2 mb-2">
+    <StyledView className="flex-row mt-1 ml-2">
       <Chip style={styles.chip} mode="outlined">
         <StyledText className="font-abhaya" style={styles.chipText}>
           {epoch}
