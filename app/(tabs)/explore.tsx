@@ -54,7 +54,10 @@ const Explore: React.FC = () => {
       title={item.title}
       author={item.author}
       cover={item.cover_thumb}
-      onPress={() => console.log(`Otwieram książkę ${item.slug}`)}
+      bookSlug={item.slug}
+      epoch={item.epoch}
+      kinds={item.kind}
+      genre={item.genre}
     />
   );
 
@@ -87,7 +90,7 @@ const Explore: React.FC = () => {
         <FlatList
           data={filteredBooks}
           renderItem={renderItem}
-          keyExtractor={(item) => item.title}
+          keyExtractor={(item, index) => `${item.slug}-${index}`}
           contentContainerStyle={{ paddingHorizontal: 10, paddingTop: 20 }}
           showsVerticalScrollIndicator={false}
           ListEmptyComponent={

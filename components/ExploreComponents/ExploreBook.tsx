@@ -1,24 +1,36 @@
 import React from "react";
 import { Image } from "react-native";
 import { StyledText, StyledView, StyledOpacity } from "../styledComponents";
+import { router } from "expo-router";
 
 interface ExploreBookItemProps {
   title: string;
   author: string;
   cover: string;
-  onPress?: () => void;
+  bookSlug: string;
+  epoch: string;
+  kinds: string;
+  genre: string;
 }
 
 const ExploreBookItem: React.FC<ExploreBookItemProps> = ({
   title,
   author,
   cover,
-  onPress,
+  bookSlug,
+  epoch,
+  kinds,
+  genre,
 }) => {
   return (
     <StyledOpacity
       className="flex-row p-3 mb-4 rounded-lg bg-[#232323]"
-      onPress={onPress}
+      onPress={() =>
+        router.push({
+          pathname: "/bookdetails",
+          params: { bookSlug, title, author, cover, epoch, kinds, genre },
+        })
+      }
     >
       <Image
         source={{ uri: cover }}

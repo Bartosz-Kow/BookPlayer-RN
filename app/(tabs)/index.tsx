@@ -60,7 +60,7 @@ const Index: React.FC = () => {
             <FlatList
               data={booksData.wolneKsiazki}
               renderItem={renderItem}
-              keyExtractor={(item) => item.title}
+              keyExtractor={(item, index) => `${item.slug}-${index}`}
               showsHorizontalScrollIndicator={false}
               contentContainerStyle={{ paddingHorizontal: 10 }}
               horizontal
@@ -71,7 +71,7 @@ const Index: React.FC = () => {
             <FlatList
               data={booksData.poetkiZaglady}
               renderItem={renderItem}
-              keyExtractor={(item) => item.title}
+              keyExtractor={(item, index) => `${item.slug}-${index}`}
               showsHorizontalScrollIndicator={false}
               contentContainerStyle={{ paddingHorizontal: 10 }}
               horizontal
@@ -83,7 +83,7 @@ const Index: React.FC = () => {
             <FlatList
               data={booksData.bajkiBajeczki}
               renderItem={renderItem}
-              keyExtractor={(item) => item.title}
+              keyExtractor={(item, index) => `${item.slug}-${index}`}
               showsHorizontalScrollIndicator={false}
               contentContainerStyle={{ paddingHorizontal: 10 }}
               horizontal
@@ -94,7 +94,7 @@ const Index: React.FC = () => {
             <FlatList
               data={booksData.biblioteczkaAntyczna}
               renderItem={renderItem}
-              keyExtractor={(item) => item.title}
+              keyExtractor={(item, index) => `${item.slug}-${index}`}
               showsHorizontalScrollIndicator={false}
               contentContainerStyle={{ paddingHorizontal: 10 }}
               horizontal
