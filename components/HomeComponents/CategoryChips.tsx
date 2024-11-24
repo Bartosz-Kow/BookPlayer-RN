@@ -14,6 +14,26 @@ export const CategoryChips = () => {
     <StyledView className="flex-row mt-1 ml-2 mb-2">
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
         <Chip
+          icon="book"
+          style={[
+            styles.chip,
+            selectedChip === "Wszystkie" && styles.selectedChip,
+          ]}
+          mode="outlined"
+          onPress={() => handleChipClick("Wszystkie")}
+        >
+          <StyledText
+            className="font-abhaya"
+            style={
+              selectedChip === "Wszystkie"
+                ? styles.selectedText
+                : styles.defaultText
+            }
+          >
+            Wszystkie
+          </StyledText>
+        </Chip>
+        <Chip
           icon="fire"
           style={[
             styles.chip,

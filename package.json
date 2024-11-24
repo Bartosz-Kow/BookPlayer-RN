@@ -17,9 +17,13 @@
   "dependencies": {
     "@expo/vector-icons": "^14.0.2",
     "@react-native-community/slider": "^4.5.2",
+    "@react-native-firebase/app": "^21.3.0",
+    "@react-native-firebase/auth": "^21.3.0",
+    "@react-native-firebase/database": "^21.3.0",
     "@react-navigation/native": "^6.0.2",
     "axios": "^1.7.7",
     "expo": "~51.0.28",
+    "expo-av": "~14.0.7",
     "expo-constants": "~16.0.2",
     "expo-font": "~12.0.9",
     "expo-linear-gradient": "~13.0.2",
@@ -42,8 +46,7 @@
     "react-native-screens": "3.31.1",
     "react-native-web": "~0.19.10",
     "react-native-webview": "13.8.6",
-    "xml2js": "^0.6.2",
-    "expo-av": "~14.0.7"
+    "xml2js": "^0.6.2"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
