@@ -3,13 +3,15 @@ import { StyleSheet, ScrollView } from "react-native";
 import { Chip } from "react-native-paper";
 import { StyledText, StyledView } from "../styledComponents";
 
-export const CategoryChips = () => {
-  const [selectedChip, setSelectedChip] = useState<string | null>(null);
+interface CategoryChipsProps {
+  selectedChip: string | null;
+  handleChipClick: (chip: string | null) => void;
+}
 
-  const handleChipClick = (chip: string) => {
-    setSelectedChip(chip === selectedChip ? null : chip);
-  };
-
+export const CategoryChips: React.FC<CategoryChipsProps> = ({
+  selectedChip,
+  handleChipClick,
+}) => {
   return (
     <StyledView className="flex-row mt-1 ml-2 mb-2">
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
@@ -118,6 +120,8 @@ export const CategoryChips = () => {
   );
 };
 
+export default CategoryChips;
+
 const styles = StyleSheet.create({
   chip: {
     marginHorizontal: 10,
@@ -133,5 +137,3 @@ const styles = StyleSheet.create({
     color: "#181A1A",
   },
 });
-
-export default CategoryChips;
