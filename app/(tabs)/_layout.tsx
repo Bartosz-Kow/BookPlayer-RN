@@ -74,20 +74,6 @@ export default function TabLayout() {
           },
         }}
       />
-      <Tabs.Screen
-        name="library"
-        options={{
-          title: "Library",
-          tabBarIcon: ({ color }) => (
-            <FontAwesome size={25} name="bookmark-o" color={color} />
-          ),
-        }}
-        listeners={{
-          tabPress: () => {
-            setActiveTab("library");
-          },
-        }}
-      />
     </Tabs>
   );
 }

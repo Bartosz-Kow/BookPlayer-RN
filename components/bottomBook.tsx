@@ -73,23 +73,6 @@ const BottomBook = () => {
     }
   };
 
-  const rewind10Seconds = async () => {
-    if (sound) {
-      const newPosition = Math.max(playbackStatus.position - 10000, 0);
-      await sound.setPositionAsync(newPosition);
-    }
-  };
-
-  const fastForward10Seconds = async () => {
-    if (sound) {
-      const newPosition = Math.min(
-        playbackStatus.position + 10000,
-        playbackStatus.duration
-      );
-      await sound.setPositionAsync(newPosition);
-    }
-  };
-
   return (
     <>
       <StyledView className="flex-start items-start w-full px-4 sm:px-6 lg:px-8">
@@ -118,47 +101,28 @@ const BottomBook = () => {
       </StyledView>
 
       <StyledView className="flex-row justify-between items-center w-full px-4">
-        <StyledOpacity
-          className="rounded-full p-2 flex-1 items-center"
-          onPress={undefined}
-        >
-          <Icon source="skip-previous" size={30} color="#EAF4F4" />
-        </StyledOpacity>
-
-        <StyledOpacity
-          className="rounded-full p-2 flex-1 items-center"
-          onPress={rewind10Seconds}
-        >
-          <Icon source="rewind-10" size={30} color="#EAF4F4" />
-        </StyledOpacity>
-
-        <StyledOpacity
-          className={`rounded-full p-2 flex-1 items-center ${
-            isPlaying ? "play-button-container" : ""
-          }`}
-          style={isPlaying ? styles.playButtonContainer : {}}
-          onPress={togglePlayPause}
-        >
-          <Icon
-            source={isPlaying ? "pause" : "play"}
-            size={50}
-            color={isPlaying ? styles.playButton.color : "#EAF4F4"}
-          />
-        </StyledOpacity>
-
-        <StyledOpacity
-          className="rounded-full p-2 flex-1 items-center"
-          onPress={fastForward10Seconds}
-        >
-          <Icon source="fast-forward-10" size={30} color="#EAF4F4" />
-        </StyledOpacity>
-
-        <StyledOpacity
-          className="rounded-full p-2 flex-1 items-center"
-          onPress={undefined}
-        >
-          <Icon source="skip-next" size={30} color="#EAF4F4" />
-        </StyledOpacity>
+        {[
+          "skip-previous",
+          "rewind-10",
+          "play",
+          "fast-forward-10",
+          "skip-next",
+        ].map((icon, index) => (
+          <StyledOpacity
+            key={index}
+            className={`rounded-full p-2 flex-1 items-center ${
+              icon === "play" ? "play-button-container" : ""
+            }`}
+            style={icon === "play" ? styles.playButtonContainer : {}}
+            onPress={icon === "play" ? togglePlayPause : undefined}
+          >
+            <Icon
+              source={icon === "play" && isPlaying ? "pause" : icon}
+              size={icon === "play" ? 50 : 30}
+              color={icon === "play" ? styles.playButton.color : "#EAF4F4"}
+            />
+          </StyledOpacity>
+        ))}
       </StyledView>
 
       <StyledText className="text-right text-xs mt-2 w-full px-4 text-white">

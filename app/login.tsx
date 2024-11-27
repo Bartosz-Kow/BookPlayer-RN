@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { KeyboardAvoidingView, Platform } from "react-native";
+import { Alert, KeyboardAvoidingView, Platform } from "react-native";
 import { useNavigationHandlers } from "@/hooks/useNavigationHandlers";
 import {
   StyledView,
@@ -8,10 +8,22 @@ import {
 } from "@/components/styledComponents";
 import { LoginInput, PasswordInput } from "@/components/TextInputs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { loginWithEmailAndPassword } from "@/components/firebase/firebaseAuth";
+
 const Login = () => {
   const { handleRouteHome, handleRouteRegister } = useNavigationHandlers();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const handleLogin = async () => {
+    try {
+      const user = await loginWithEmailAndPassword(email, password);
+      Alert.alert("Sukces", `Zalogowano jako: ${user.email}`);
+      handleRouteHome();
+    } catch (error) {
+      Alert.alert("Błąd", "Nieprawidłowe dane logowania.");
+    }
+  };
 
   return (
     <KeyboardAvoidingView
@@ -49,7 +61,7 @@ const Login = () => {
         />
 
         <StyledOpacity
-          onPress={handleRouteHome}
+          onPress={handleLogin}
           className="border-2 border-white py-3 px-5 mt-2 rounded-lg flex-row justify-center items-center shadow-lg"
         >
           <StyledText className="text-white font-semibold text-lg">

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { KeyboardAvoidingView, Platform } from "react-native";
+import { Alert, KeyboardAvoidingView, Platform } from "react-native";
 import { useNavigationHandlers } from "@/hooks/useNavigationHandlers";
 import {
   StyledView,
@@ -8,12 +8,27 @@ import {
 } from "@/components/styledComponents";
 import { LoginInput, PasswordInput } from "@/components/TextInputs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { registerWithEmailAndPassword } from "@/components/firebase/firebaseAuth";
 
 const Register = () => {
   const { handleRouteHome, handleRouteLogin } = useNavigationHandlers();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+
+  const handleRegister = async () => {
+    if (password !== confirmPassword) {
+      Alert.alert("Błąd", "Hasła muszą się zgadzać.");
+      return;
+    }
+    try {
+      const user = await registerWithEmailAndPassword(email, password);
+      Alert.alert("Sukces", `Zarejestrowano użytkownika: ${user.email}`);
+      handleRouteHome();
+    } catch (error) {
+      throw error;
+    }
+  };
 
   return (
     <KeyboardAvoidingView
@@ -58,7 +73,7 @@ const Register = () => {
         />
 
         <StyledOpacity
-          onPress={handleRouteHome}
+          onPress={handleRegister}
           className="border-2 border-white py-3 px-5 mt-2 rounded-lg flex-row justify-center items-center shadow-lg"
         >
           <StyledText className="text-white font-semibold text-lg">

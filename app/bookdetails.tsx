@@ -43,7 +43,8 @@ const BookDetails = () => {
     const loadBookDetails = async () => {
       try {
         const bookDetails = await fetchBookDetails(bookSlug as string);
-        console.log("Book details:", bookDetails);
+        //console.log("Book details:", bookDetails);
+
         setBook(bookDetails);
       } catch (error) {
         console.error(error);
@@ -63,16 +64,22 @@ const BookDetails = () => {
   };
 
   const handleAudiobookPress = () => {
-    if (book && book.cover) {
+    if (mp3Media.length > 0) {
+      const firstMedia = mp3Media[0];
+      const cover = book?.cover || "";
+
       router.push({
         pathname: "/playbook",
         params: {
-          bookSlug,
-          cover: book.cover,
-          title: book.title,
-          author: book.authors[0]?.name,
+          url: firstMedia.url,
+          director: firstMedia.director,
+          name: firstMedia.name,
+          artist: firstMedia.artist,
+          cover: cover,
         },
       });
+    } else {
+      console.log("No audio media available");
     }
   };
 
