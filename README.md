@@ -5,10 +5,9 @@ Welcome to the Audiobook App! A user-friendly mobile application built with Reac
 ## 🎥 Demo
 
     Note: Add a short GIF or screen recording showing the app in action to highlight its features.
-    |                  Register Login UI                  |                 Demo App               |
 
-| :----------------------------------------: | :------------------------------------: |
-| ![Register UI](/assets/images/registerPages.gif) | ![Demo App](/assets/images/demo.gif) |
+![Register UI](/assets/images/registerPages.gif)  
+![Demo App](/assets/images/demo.gif)
 
 ## 🌟 Features 🌟
 
