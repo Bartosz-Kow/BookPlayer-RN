@@ -9,7 +9,7 @@ import {
   FIREBASE_APP_ID,
   FIREBASE_MEASUREMENT_ID,
 } from "@env";
-// Konfiguracja Firebase
+
 export const firebaseConfig = {
   apiKey: FIREBASE_API_KEY,
   authDomain: FIREBASE_AUTH_DOMAIN,
@@ -20,6 +20,6 @@ export const firebaseConfig = {
   measurementId: FIREBASE_MEASUREMENT_ID,
 };
 
-// Inicjalizacja Firebase
+
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
